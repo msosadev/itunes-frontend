@@ -8,7 +8,7 @@
 }
 
 .wrapper {
-  @apply w-full px-4;
+  @apply w-full px-4 sm:px-8 lg:max-w-3/4 lg:mx-auto;
 }
 
 a {
