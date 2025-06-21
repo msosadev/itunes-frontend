@@ -1,5 +1,4 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 import MainNavigation from "~/components/MainNavigation";
 import { Outlet } from "react-router";
 
@@ -13,6 +12,8 @@ export function meta({}: Route.MetaArgs) {
 export default function Dashboard() {
   return <>
   <MainNavigation />
-  <Outlet />
+  <main className="pb-24">
+    <Outlet />
+  </main>
   </>;
 }

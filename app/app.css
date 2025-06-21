@@ -7,6 +7,10 @@
   --color-secondary: #B051F9;
 }
 
+.wrapper {
+  @apply w-full px-4;
+}
+
 html,
 body {
   @apply bg-white dark:bg-gray-950;
