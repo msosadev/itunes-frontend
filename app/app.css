@@ -11,6 +11,10 @@
   @apply w-full px-4;
 }
 
+a {
+  @apply hover:underline
+}
+
 html,
 body {
   @apply bg-white dark:bg-gray-950;
