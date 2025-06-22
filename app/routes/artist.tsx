@@ -2,8 +2,9 @@ import { useLoaderData } from "react-router";
 import type { Route } from "./+types/artist";
 import SongListItem from "~/components/SongListItem";
 import React from "react";
-import AlbumCarousel from "~/components/AlbumsGrid";
+import AlbumGrid from "~/components/AlbumsGrid";
 import ArtistHero from "~/components/ArtistHero";
+import SectionTitle from "~/components/SectionTitle";
 
 export async function loader({ params }: Route.LoaderArgs) {
   const { artistId } = params;
@@ -41,7 +42,7 @@ export default function Artist() {
         heroVideo={heroVideo}
       />
       <div className="wrapper">
-        <h2 className="my-4">Top Songs</h2>
+        <SectionTitle title="Top Songs" />
         <ul className="bg-gray-800 rounded-lg">
           {topSongs.map((song: any, idx: number) => (
             <React.Fragment key={song.trackId}>
@@ -57,7 +58,8 @@ export default function Artist() {
       </div>
 
       <div className="mt-8 wrapper">
-        <AlbumCarousel albums={albums} title="Discography" />
+        <AlbumGrid albums={albums.filter((album: any) => album.trackCount > 1)} title="Albums & EPs" />
+        <AlbumGrid albums={albums.filter((album: any) => album.trackCount === 1)} title="Singles" />
       </div>
     </div>
   );
