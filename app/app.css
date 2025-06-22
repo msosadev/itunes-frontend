@@ -12,7 +12,7 @@
 }
 
 .magic-gradient {
-  @apply bg-gradient-to-r from-primary to-secondary;
+  @apply after:content-[""] after:block after:absolute after:inset-0 after:transition-opacity relative overflow-hidden after:bg-gradient-to-r after:from-primary after:to-secondary;
 }
 
 a {
