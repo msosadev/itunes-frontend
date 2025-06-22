@@ -5,6 +5,7 @@ import React from "react";
 import AlbumGrid from "~/components/AlbumsGrid";
 import ArtistHero from "~/components/ArtistHero";
 import SectionTitle from "~/components/SectionTitle";
+import SongList from "~/components/SongList";
 
 export async function loader({ params }: Route.LoaderArgs) {
   const { artistId } = params;
@@ -43,18 +44,7 @@ export default function Artist() {
       />
       <div className="wrapper">
         <SectionTitle title="Top Songs" />
-        <ul className="bg-gray-800 rounded-lg">
-          {topSongs.map((song: any, idx: number) => (
-            <React.Fragment key={song.trackId}>
-              <SongListItem song={song} />
-              {idx < topSongs.length - 1 && (
-                <li>
-                  <hr className="border-gray-600 my-1" />
-                </li>
-              )}
-            </React.Fragment>
-          ))}
-        </ul>
+        <SongList songs={topSongs} />
       </div>
 
       <div className="mt-8 wrapper">

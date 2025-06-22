@@ -12,7 +12,7 @@ export function meta({ }: Route.MetaArgs) {
 export default function Dashboard() {
   return <main className="flex min-h-screen bg-gray-900 text-white">
     <MainNavigation />
-    <div className="pb-24">
+    <div className="pb-24 flex-1">
       <Outlet />
     </div>
   </main>;
