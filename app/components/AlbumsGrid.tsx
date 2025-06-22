@@ -1,6 +1,6 @@
 import SectionTitle from "./SectionTitle";
 
-export default function AlbumGrid({ albums, title }: { albums: any[], title: string }) {
+export default function AlbumGrid({ albums, title, infoToShow }: { albums: any[], title: string, infoToShow?: any[] }) {
     return (
         <div className="space-y-4">
             <SectionTitle title={title} />
@@ -10,7 +10,15 @@ export default function AlbumGrid({ albums, title }: { albums: any[], title: str
                         <img src={album.artworkUrl100} alt={album.collectionName} className="rounded-lg size-20" />
                         <div>
                             <a href={`/album/${album.collectionId}`} className="text-white text-md line-clamp-2">{album.collectionName}</a>
-                            <p className="text-gray-400 text-sm">{album.artistName}</p>
+                            {infoToShow && infoToShow.map((key, index) => {
+                                let value = album[key];
+                                if (!value) return null;
+                                if (key === "releaseDate") {
+                                    const year = new Date(value).getFullYear();
+                                    value = year;
+                                }
+                                return <p key={index} className="text-gray-400 text-sm">{value}</p>
+                            })}
                         </div>
                     </div>
                 ))}

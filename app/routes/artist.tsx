@@ -48,8 +48,22 @@ export default function Artist() {
       </div>
 
       <div className="mt-8 wrapper">
-        <AlbumGrid albums={albums.filter((album: any) => album.trackCount > 1)} title="Albums & EPs" />
-        <AlbumGrid albums={albums.filter((album: any) => album.trackCount === 1)} title="Singles" />
+        <AlbumGrid
+          infoToShow={["releaseDate"]}
+          albums={albums
+            .filter((album: any) => album.trackCount > 1)
+            .sort((a: any, b: any) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
+          }
+          title="Albums & EPs"
+        />
+        <AlbumGrid
+          infoToShow={["releaseDate"]}
+          albums={albums
+            .filter((album: any) => album.trackCount === 1)
+            .sort((a: any, b: any) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
+          }
+          title="Singles"
+        />
       </div>
     </div>
   );
