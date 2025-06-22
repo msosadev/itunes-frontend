@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 interface Song {
   artworkUrl60: string;
   trackName: string;
@@ -24,9 +26,9 @@ export default function SongListItem({ song, infoToShow = ["artistName", "collec
         <h6 className="text-sm line-clamp-1">{song.trackName}</h6>
         {infoKeys.map((key, index) => {
           if (key === "collectionName" && song.collectionName) {
-            return <a key={index} href={`/album/${song.collectionId}`} className="text-xs text-gray-400 line-clamp-1">{song.collectionName}</a>;
+            return <Link key={index} to={`/album/${song.collectionId}`} className="text-xs text-gray-400 line-clamp-1">{song.collectionName}</Link>;
           } else if (key === "artistName" && song.artistName) {
-            return <a key={index} href={`/artist/${song.artistId}`} className="text-xs text-gray-400 line-clamp-1">{song.artistName}</a>;
+            return <Link key={index} to={`/artist/${song.artistId}`} className="text-xs text-gray-400 line-clamp-1">{song.artistName}</Link>;
           } else {
             return <p key={index} className="text-xs text-gray-400 line-clamp-1">{song[key as keyof Song]}</p>
           }

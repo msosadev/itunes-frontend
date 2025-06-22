@@ -1,4 +1,5 @@
 import { FileQuestionMark } from "lucide-react";
+import { Link } from "react-router";
 
 export default function PageError({ title, description }: { title?: string; description?: string }) {
     return (
@@ -6,7 +7,7 @@ export default function PageError({ title, description }: { title?: string; desc
             <FileQuestionMark />
             <h1 className="text-2xl font-bold">{title ? title : "Unexpected error"}</h1>
             {description ? <p className="text-gray-500">{description}</p> : ""}
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
         </div>
     );
 }

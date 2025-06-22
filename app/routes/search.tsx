@@ -1,5 +1,6 @@
 import { Guitar, Loader, SearchIcon, Section } from "lucide-react";
 import { useEffect, useId, useState } from "react";
+import { Link } from "react-router";
 import AlbumGrid from "~/components/AlbumsGrid";
 import SectionTitle from "~/components/SectionTitle";
 import SongList from "~/components/SongList";
@@ -68,7 +69,7 @@ export default function Search() {
                 {results.filter(result => result.wrapperType === "artist").map((result, index) => (
                   <li className="flex gap-2 items-center" key={index}>
                     <Guitar width={20} className="text-gray-400" />
-                    <a href={`/artist/${result.artistId}`}>{result.artistName}</a>
+                    <Link to={`/artist/${result.artistId}`}>{result.artistName}</Link>
                   </li>
                 ))}
               </ul>

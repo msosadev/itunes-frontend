@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import SectionTitle from "./SectionTitle";
 
 export default function AlbumGrid({ albums, title, infoToShow }: { albums: any[], title: string, infoToShow?: any[] }) {
@@ -10,7 +11,7 @@ export default function AlbumGrid({ albums, title, infoToShow }: { albums: any[]
                     <div key={album.collectionId} className="bg-gray-800 rounded-lg p-4 flex items-center gap-3">
                         <img src={album.artworkUrl100} alt={album.collectionName} className="rounded-lg size-20" />
                         <div>
-                            <a href={`/album/${album.collectionId}`} className="text-white text-md line-clamp-2">{album.collectionName}</a>
+                            <Link to={`/album/${album.collectionId}`} className="text-white text-md line-clamp-2">{album.collectionName}</Link>
                             {infoToShow && infoToShow.map((key, index) => {
                                 let value = album[key];
                                 if (!value) return null;
