@@ -44,7 +44,7 @@ export default function Artist() {
       />
       <div className="wrapper">
         <SectionTitle title="Top Songs" />
-        <SongList songs={topSongs} />
+        <SongList songs={topSongs} infoToShow={["collectionName", "artworkUrl100"]} />
       </div>
 
       <div className="mt-8 wrapper">

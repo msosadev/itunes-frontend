@@ -31,7 +31,7 @@ export default function Search() {
         setResults([]);
         setSearchPerformed(false);
       }
-    }, 500);
+    }, 1000);
     return () => clearTimeout(searchTimeout);
 
   }, [searchTerm]);
