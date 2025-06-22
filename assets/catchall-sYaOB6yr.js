@@ -1,1 +1,0 @@
-import{w as o,o as t}from"./chunk-NL6KNZEE-Dc8vaAUU.js";import{P as r}from"./PageError-BSTr7m6V.js";import"./createLucideIcon-C0lJV8vF.js";const s=o(function(){return t.jsx(r,{title:"Page Not Found",description:"The page you are looking for can't be found."})});export{s as default};
