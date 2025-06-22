@@ -6,6 +6,6 @@ export default [
         route("search", "routes/search.tsx"),
         route("artist/:artistId", "routes/artist.tsx"),
         route("album/:albumId", "routes/album.tsx"),
+        route("*", "routes/catchall.tsx")
     ]),
-    route("*", "routes/catchall.tsx")
 ] satisfies RouteConfig;

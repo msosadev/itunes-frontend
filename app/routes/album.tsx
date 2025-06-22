@@ -1,10 +1,8 @@
-import { useLoaderData } from "react-router";
+import { isRouteErrorResponse, useLoaderData, useRouteError } from "react-router";
 import type { Route } from "./+types/album";
-import { Section } from "lucide-react";
 import SectionTitle from "~/components/SectionTitle";
-import React from "react";
-import SongListItem from "~/components/SongListItem";
 import SongList from "~/components/SongList";
+import PageError from "~/components/PageError";
 
 export async function loader({ params }: Route.LoaderArgs) {
   const { albumId } = params;
@@ -19,9 +17,7 @@ export async function loader({ params }: Route.LoaderArgs) {
   return albumData;
 }
 
-export default function Component({
-  params,
-}: Route.ComponentProps) {
+export default function Album() {
   const data = useLoaderData<typeof loader>();
   const albumInfo = data.results[0];
   const songs = data.results.slice(1);
@@ -32,4 +28,12 @@ export default function Component({
       {songs.length > 0 ? <SongList songs={songs} /> : <p>No songs found for this album</p>}
     </div>
   );
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  console.log(error);
+  
+  if (isRouteErrorResponse(error)) return <PageError title={`Resource not found`} description={error.data} />
+  return <PageError title="Unexpected Error" description={error instanceof Error ? error.message : String(error)} />
 }

@@ -1,3 +1,5 @@
+import PageError from "~/components/PageError";
+
 export default function CatchAll() {
-  return <h1>404 Page not found!</h1>;
+  return <PageError title="Page Not Found" description="The page you are looking for can't be found." />;
 }
