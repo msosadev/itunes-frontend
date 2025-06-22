@@ -1,40 +1,59 @@
-import { useLoaderData } from "react-router";
-import type { Route } from "./+types/artist";
+import { useParams } from "react-router";
+import { useEffect, useState } from "react";
 import AlbumGrid from "~/components/AlbumsGrid";
 import ArtistHero from "~/components/ArtistHero";
 import SectionTitle from "~/components/SectionTitle";
 import SongList from "~/components/SongList";
-import useRouteCatcher from "~/hooks/useRouteCatcher";
 import PageError from "~/components/PageError";
 
-export async function loader({ params }: Route.LoaderArgs) {
-  const { artistId } = params;
-  if (!artistId) throw new Response("Missing artistId", { status: 400 });
-
-  // First API call: fetch artist and top songs
-  const response = await fetch(`https://itunes.apple.com/lookup?id=${artistId}&entity=song&limit=10`);
-  if (!response.ok) throw new Response("Failed to fetch artist", { status: response.status });
-  const songsData = await response.json();
-
-  // Second API call: fetch albums
-  const albumsResponse = await fetch(`https://itunes.apple.com/lookup?id=${artistId}&entity=album`);
-  if (!albumsResponse.ok) throw new Response("Failed to fetch albums", { status: albumsResponse.status });
-  const albumsData = await albumsResponse.json();
-
-  // Third API call: fetch music video
-  const videoResponse = await fetch(`https://itunes.apple.com/lookup?id=${artistId}&entity=musicVideo&limit=1`);
-  if (!videoResponse.ok) throw new Response("Failed to fetch music video", { status: videoResponse.status });
-  const videoData = await videoResponse.json();
-
-  return { ...songsData, albums: albumsData.results, video: videoData };
-}
-
 export default function Artist() {
-  const data = useLoaderData<typeof loader>();
+  const { artistId } = useParams() as { artistId: string };
+  const [data, setData] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!artistId) {
+      setError("Missing artistId");
+      setLoading(false);
+      return;
+    }
+
+    async function fetchData() {
+      try {
+        // Fetch artist and top songs
+        const response = await fetch(`https://itunes.apple.com/lookup?id=${artistId}&entity=song&limit=10`);
+        if (!response.ok) throw new Error("Failed to fetch artist");
+        const songsData = await response.json();
+
+        // Fetch albums
+        const albumsResponse = await fetch(`https://itunes.apple.com/lookup?id=${artistId}&entity=album`);
+        if (!albumsResponse.ok) throw new Error("Failed to fetch albums");
+        const albumsData = await albumsResponse.json();
+
+        // Fetch music video
+        const videoResponse = await fetch(`https://itunes.apple.com/lookup?id=${artistId}&entity=musicVideo&limit=1`);
+        if (!videoResponse.ok) throw new Error("Failed to fetch music video");
+        const videoData = await videoResponse.json();
+
+        setData({ ...songsData, albums: albumsData.results, video: videoData });
+      } catch (e: any) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, [artistId]);
+
+  if (loading) return <div className="wrapper">Loading...</div>;
+  if (error || !data) return <PageError title="Error" description={error || "Unknown error"} />;
+
   const artistInfo = data.results[0];
   const topSongs = data.results.slice(1);
   const albums = data.albums.slice(1);
-  const heroVideo = data.video.results[1].previewUrl;
+  const heroVideo = data.video.results?.[1]?.previewUrl;
 
   return (
     <div>
@@ -67,9 +86,4 @@ export default function Artist() {
       </div>
     </div>
   );
-}
-
-export function ErrorBoundary() {
-  const { title, description } = useRouteCatcher();
-  return <PageError title={title} description={description} />;
 }
