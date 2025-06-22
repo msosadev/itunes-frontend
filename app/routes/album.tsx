@@ -25,7 +25,7 @@ export default function Album() {
   return (
     <div className="wrapper">
       <SectionTitle title={albumInfo.collectionName} />
-      {songs.length > 0 ? <SongList songs={songs} /> : <p>No songs found for this album</p>}
+      {songs.length > 0 ? <SongList showArtist={true} songs={songs} /> : <p>No songs found for this album</p>}
     </div>
   );
 }
