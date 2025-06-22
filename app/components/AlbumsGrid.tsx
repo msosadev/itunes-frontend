@@ -1,6 +1,7 @@
 import SectionTitle from "./SectionTitle";
 
 export default function AlbumGrid({ albums, title, infoToShow }: { albums: any[], title: string, infoToShow?: any[] }) {
+    if (!albums || albums.length === 0) return;
     return (
         <div className="space-y-4">
             <SectionTitle title={title} />

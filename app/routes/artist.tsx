@@ -1,7 +1,5 @@
 import { useLoaderData } from "react-router";
 import type { Route } from "./+types/artist";
-import SongListItem from "~/components/SongListItem";
-import React from "react";
 import AlbumGrid from "~/components/AlbumsGrid";
 import ArtistHero from "~/components/ArtistHero";
 import SectionTitle from "~/components/SectionTitle";

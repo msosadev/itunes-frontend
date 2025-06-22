@@ -11,6 +11,10 @@
   @apply w-full px-4 sm:px-8 lg:max-w-[700px] lg:mx-auto xl:max-w-[900px];
 }
 
+.magic-gradient {
+  @apply bg-gradient-to-r from-primary to-secondary;
+}
+
 a {
   @apply hover:underline
 }
