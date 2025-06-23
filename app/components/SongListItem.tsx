@@ -1,4 +1,7 @@
+import { CirclePlay, Play } from "lucide-react";
+import { useContext } from "react";
 import { Link } from "react-router";
+import { SongContext } from "~/context/SongContext";
 
 interface Song {
   artworkUrl60: string;
@@ -7,6 +10,7 @@ interface Song {
   collectionId: number;
   artistName?: string;
   artistId?: number;
+  previewUrl?: string;
 }
 
 type SongListItemProps = {
@@ -17,12 +21,13 @@ type SongListItemProps = {
 export default function SongListItem({ song, infoToShow = ["artistName", "collectionName", "artworkUrl60"] }: SongListItemProps) {
   const coverImg = infoToShow.find(info => info.includes("artworkUrl")) || null;
   const infoKeys = infoToShow.filter(info => !info.includes("artworkUrl"));
+  const { setSongToPlay } = useContext(SongContext);
   return (
-    <li className="grid grid-cols-[auto_1fr] items-center gap-4 p-2">
+    <li className="flex items-center gap-4 py-2 px-4">
       {coverImg && song[coverImg as keyof Song] && (
         <img className="aspect-square object-cover gap-2 max-w-12 rounded-sm" src={song[coverImg as keyof Song] as string} alt={song.trackName} />
       )}
-      <div className="song-info space-y-1">
+      <div className="song-info space-y-1 flex-1">
         <h6 className="text-sm line-clamp-1">{song.trackName}</h6>
         {infoKeys.map((key, index) => {
           if (key === "collectionName" && song.collectionName) {
@@ -34,6 +39,7 @@ export default function SongListItem({ song, infoToShow = ["artistName", "collec
           }
         })}
       </div>
+      {song.previewUrl && <button className="cursor-pointer" onClick={() => { setSongToPlay(song.previewUrl!) }}><CirclePlay /></button>}
     </li>
   );
 }

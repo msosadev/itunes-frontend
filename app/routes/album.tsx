@@ -45,7 +45,7 @@ export default function Album() {
           />
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-x-3">
-              <h1 className="text-6xl/tight font-bold line-clamp-2">{albumInfo.collectionName}</h1>
+              <h1 className="text-4xl/tight font-bold line-clamp-2">{albumInfo.collectionName}</h1>
               {albumInfo.primaryGenreName && <Badge label={albumInfo.primaryGenreName} />}
             </div>
             <div className="flex flex-wrap items-center gap-3">
