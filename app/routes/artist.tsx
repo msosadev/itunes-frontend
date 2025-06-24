@@ -49,6 +49,7 @@ export default function Artist() {
   }, [artistId]);
 
   if (loading) return <PageLoadingSpinner />;
+  if (data && data.resultCount === 0) return <PageError title="Artist not found" description="No artist found with the provided ID." />;
   if (error || !data) return <PageError title="Error" description={error || "Unknown error"} />;
 
   const artistInfo = data.results[0];

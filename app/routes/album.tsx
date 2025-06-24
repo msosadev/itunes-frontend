@@ -29,6 +29,7 @@ export default function Album() {
   }, [albumId]);
 
   if (loading) return <PageLoadingSpinner />;
+  if (data && data.resultCount === 0) return <PageError title="Album not found" description="No album found with the provided ID." />;
   if (error || !data) return <PageError title="Error" description={error || "Unknown error"} />;
 
   const albumInfo = data.results[0];
