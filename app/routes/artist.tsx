@@ -5,6 +5,7 @@ import ArtistHero from "~/components/ArtistHero";
 import SectionTitle from "~/components/SectionTitle";
 import SongList from "~/components/SongList";
 import PageError from "~/components/PageError";
+import PageLoadingSpinner from "~/components/PageLoadingSpinner";
 
 export default function Artist() {
   const { artistId } = useParams() as { artistId: string };
@@ -47,7 +48,8 @@ export default function Artist() {
     fetchData();
   }, [artistId]);
 
-  if (loading) return <div className="wrapper">Loading...</div>;
+  if (loading) return <PageLoadingSpinner />;
+  if (data && data.resultCount === 0) return <PageError title="Artist not found" description="No artist found with the provided ID." />;
   if (error || !data) return <PageError title="Error" description={error || "Unknown error"} />;
 
   const artistInfo = data.results[0];

@@ -4,6 +4,7 @@ import SongList from "~/components/SongList";
 import PageError from "~/components/PageError";
 import Badge from "~/components/Badge";
 import ExplicitBadge from "~/components/ExplicitBadge";
+import PageLoadingSpinner from "~/components/PageLoadingSpinner";
 
 export default function Album() {
   const { albumId } = useParams() as { albumId: string };
@@ -27,7 +28,8 @@ export default function Album() {
       .finally(() => setLoading(false));
   }, [albumId]);
 
-  if (loading) return <div className="wrapper">Loading...</div>;
+  if (loading) return <PageLoadingSpinner />;
+  if (data && data.resultCount === 0) return <PageError title="Album not found" description="No album found with the provided ID." />;
   if (error || !data) return <PageError title="Error" description={error || "Unknown error"} />;
 
   const albumInfo = data.results[0];
@@ -45,7 +47,7 @@ export default function Album() {
           />
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-x-3">
-              <h1 className="text-6xl/tight font-bold line-clamp-2">{albumInfo.collectionName}</h1>
+              <h1 className="text-4xl/tight font-bold line-clamp-2">{albumInfo.collectionName}</h1>
               {albumInfo.primaryGenreName && <Badge label={albumInfo.primaryGenreName} />}
             </div>
             <div className="flex flex-wrap items-center gap-3">

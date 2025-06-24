@@ -12,9 +12,9 @@ export default function NavigationItem({
     return (
         <NavLink
             to={to}
-            className={`text-white hover:text-gray-300 magic-gradient after:opacity-0 [.active]:after:opacity-100 ${autoDissapear ? "hidden [.active]:block" : "block" }  p-0.5 rounded-full`}
+            className={`text-white hover:text-gray-300 magic-gradient after:opacity-0 [.active]:after:opacity-100 ${autoDissapear ? "hidden [.active]:block pointer-events-none" : "block" }  p-0.5 rounded-full`}
         >
-            <div className="bg-gray-900 rounded-full p-3 relative z-[1]">
+            <div className="bg-gray-900 rounded-full p-2 relative z-[1]">
                 <Icon />
             </div>
         </NavLink>

@@ -1,4 +1,4 @@
-import { Guitar, Loader, SearchIcon, Section } from "lucide-react";
+import { Guitar, Loader, SearchIcon } from "lucide-react";
 import { useEffect, useId, useState } from "react";
 import { Link } from "react-router";
 import AlbumGrid from "~/components/AlbumsGrid";
@@ -77,7 +77,7 @@ export default function Search() {
           )}
 
           <AlbumGrid infoToShow={["artistName", "releaseDate"]} albums={results.filter(result => result.wrapperType === "collection")} title="Albums" />
-          {results.filter(result => result.wrapperType === "track").length && (
+          {results.filter(result => result.wrapperType === "track").length > 0 && (
             <div>
               <SectionTitle title={`Songs`} />
               <SongList songs={results.filter(result => result.wrapperType === "track")} />

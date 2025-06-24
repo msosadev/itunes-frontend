@@ -17,12 +17,12 @@ const ArtistHero: React.FC<ArtistHeroProps> = ({ artistInfo, heroVideo }) => {
     return null; // Handle case where artist info is not available
   }
   return (
-    <div className="relative h-[500px]">
+    <div className="relative h-[320px] md:h-[500px]">
       <div className="z-[2] absolute inset-x-0 wrapper bottom-6 flex items-start gap-4">
         <div className="space-y-2">
           <div className="flex flex-wrap items-center gap-3">
             <h1 className="text-6xl/tight font-bold line-clamp-2">{artistInfo.artistName}</h1>
-            <Badge label={artistInfo.primaryGenreName} />
+            {artistInfo.primaryGenreName && <Badge label={artistInfo.primaryGenreName} />}
           </div>
           <a target="blank" className="flex items-center gap-1" href={artistInfo.artistLinkUrl}>iTunes Page <ExternalLink width={16} height={16} /></a>
         </div>
