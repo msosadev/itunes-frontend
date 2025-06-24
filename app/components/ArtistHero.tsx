@@ -17,7 +17,7 @@ const ArtistHero: React.FC<ArtistHeroProps> = ({ artistInfo, heroVideo }) => {
     return null; // Handle case where artist info is not available
   }
   return (
-    <div className="relative h-[500px]">
+    <div className="relative h-[320px] md:h-[500px]">
       <div className="z-[2] absolute inset-x-0 wrapper bottom-6 flex items-start gap-4">
         <div className="space-y-2">
           <div className="flex flex-wrap items-center gap-3">

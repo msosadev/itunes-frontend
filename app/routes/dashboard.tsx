@@ -32,7 +32,7 @@ export default function Dashboard() {
   const [songToPlay, setSongToPlay] = useState<string | null>(null);
   const playingPlaylist = false;
   return (
-    <main className="grid grid-rows-[1fr_auto_auto] md:grid-cols-[auto_1fr] h-screen min-h-screen bg-gray-900 text-white">
+    <main className="grid grid-rows-[1fr_auto_auto] md:grid-cols-[auto_1fr] h-[100dvh] min-h-screen bg-gray-900 text-white">
       <div className="relative pb-4 overflow-y-auto">
         <SongContext.Provider value={{ setSongToPlay }}>
           <Outlet />
