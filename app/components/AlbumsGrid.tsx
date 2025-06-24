@@ -15,12 +15,12 @@ export default function AlbumGrid({ albums, title, infoToShow }: { albums: any[]
                         <div>
                             {infoToShow && infoToShow.map((key, index) => {
                                 let value = album[key];
-                                if (key === "collectionName" || key === "name") return <Link key={index} to={`/album/${album.collectionId || album.id}`} className="text-white text-md line-clamp-2">{album.collectionName || album.name}</Link>;
+                                if (key === "collectionName" || key === "name") return <Link to={`/album/${album.collectionId || album.id}`} key={index} className="text-white text-md line-clamp-2">{album.collectionName || album.name}</Link>;
                                 if (key === "releaseDate") {
                                     const year = new Date(value).getFullYear();
                                     value = year;
                                 }
-                                if (key === "artistName") return <Link to={`artist/${album.artistId}`} key={index} className="text-gray-400 text-sm line-clamp-1">{value}</Link>
+                                if (key === "artistName") return <Link to={`/artist/${album.artistId}`} key={index} className="text-gray-400 text-sm line-clamp-1">{value}</Link>
 
                                 if (key === "mainGenre") value = album.genres[0].name;
                                 if (!value) return null;

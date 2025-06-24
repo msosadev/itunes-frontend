@@ -89,7 +89,7 @@ export default function Search() {
             </div>
           )}
 
-          <AlbumGrid infoToShow={["artistName", "releaseDate"]} albums={results.filter(result => result.wrapperType === "collection")} title="Albums" />
+          <AlbumGrid infoToShow={["collectionName", "artistName", "releaseDate"]} albums={results.filter(result => result.wrapperType === "collection")} title="Albums" />
           {results.filter(result => result.wrapperType === "track").length > 0 && (
             <div>
               <SectionTitle title={`Songs`} />

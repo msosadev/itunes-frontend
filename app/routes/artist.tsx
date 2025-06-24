@@ -70,7 +70,7 @@ export default function Artist() {
 
       <div className="mt-8 wrapper">
         <AlbumGrid
-          infoToShow={["releaseDate"]}
+          infoToShow={["collectionName", "releaseDate"]}
           albums={albums
             .filter((album: any) => album.trackCount > 1)
             .sort((a: any, b: any) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
@@ -78,7 +78,7 @@ export default function Artist() {
           title="Albums & EPs"
         />
         <AlbumGrid
-          infoToShow={["releaseDate"]}
+          infoToShow={["collectionName", "releaseDate"]}
           albums={albums
             .filter((album: any) => album.trackCount === 1)
             .sort((a: any, b: any) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
