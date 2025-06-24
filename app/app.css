@@ -27,3 +27,21 @@ body {
     color-scheme: dark;
   }
 }
+
+/* Audio Player Styling */
+
+.rhap_container {
+  @apply !bg-gray-800 border-t border-t-gray-700; 
+}
+.rhap_progress-bar-show-download {
+  @apply !bg-gray-700;
+}
+.rhap_progress-filled {
+  @apply !bg-gradient-to-r from-primary to-secondary;
+}
+.rhap_progress-container {
+  @apply !m-0;
+}
+.rhap_main-controls-button {
+  @apply !text-white
+}
