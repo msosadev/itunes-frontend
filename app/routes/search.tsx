@@ -1,4 +1,4 @@
-import { Guitar, Loader, SearchIcon, Section } from "lucide-react";
+import { Guitar, Loader, SearchIcon } from "lucide-react";
 import { useEffect, useId, useState } from "react";
 import { Link } from "react-router";
 import AlbumGrid from "~/components/AlbumsGrid";

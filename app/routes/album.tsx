@@ -4,6 +4,7 @@ import SongList from "~/components/SongList";
 import PageError from "~/components/PageError";
 import Badge from "~/components/Badge";
 import ExplicitBadge from "~/components/ExplicitBadge";
+import PageLoadingSpinner from "~/components/PageLoadingSpinner";
 
 export default function Album() {
   const { albumId } = useParams() as { albumId: string };
@@ -27,7 +28,7 @@ export default function Album() {
       .finally(() => setLoading(false));
   }, [albumId]);
 
-  if (loading) return <div className="wrapper">Loading...</div>;
+  if (loading) return <PageLoadingSpinner />;
   if (error || !data) return <PageError title="Error" description={error || "Unknown error"} />;
 
   const albumInfo = data.results[0];

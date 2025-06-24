@@ -45,3 +45,24 @@ body {
 .rhap_main-controls-button {
   @apply !text-white
 }
+
+/* Page Loading Spinner */
+.animate-trace .trace-path {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 0;
+  animation: trace 1.5s linear infinite;
+}
+
+@keyframes trace {
+  0% {
+    stroke-dashoffset: 60;
+  }
+
+  50% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: -60;
+  }
+}
