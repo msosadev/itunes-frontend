@@ -3,7 +3,7 @@ import NavigationItem from "./NavigationItem";
 
 function MainNavigation() {
     return (
-        <nav className="bg-gray-800 fixed bottom-0 inset-x-0  md:static border-t border-gray-700 md:border-t-0 md:border-r">
+        <nav className="bg-gray-800 border-t border-gray-700 md:border-t-0 md:border-r h-full">
             <ul className="flex items-center justify-center gap-6 md:justify-start md:gap-8 md:flex-col md:items-start md:sticky md:top-0 p-4">
                 <NavigationItem to="/" icon={House} />
                 <NavigationItem to="/search" icon={SearchIcon} />

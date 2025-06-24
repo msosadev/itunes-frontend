@@ -16,20 +16,20 @@ export function meta({ }: Route.MetaArgs) {
 export default function Dashboard() {
   const [songToPlay, setSongToPlay] = useState<string | null>(null);
   return (
-    <main className="flex min-h-screen bg-gray-900 text-white">
-      <MainNavigation />
-      <div className="pb-24 md:pb-0 flex-1 relative">
+    <main className="grid grid-rows-[1fr_auto_auto] md:grid-cols-[auto_1fr] h-screen min-h-screen bg-gray-900 text-white">
+      <div className="relative pb-4 overflow-y-auto">
         <SongContext.Provider value={{ setSongToPlay }}>
           <Outlet />
         </SongContext.Provider>
-        <div className="fixed bottom-23 inset-x-0 px-2 max-w-full w-full md:sticky md:bottom-0 md:p-4">
-          <AudioPlayer
-            autoPlayAfterSrcChange={true}
-            volume={0.5}
-            src={songToPlay || undefined}
-          />
-        </div>
       </div>
+      <div>
+        <AudioPlayer
+          autoPlayAfterSrcChange={true}
+          volume={0.5}
+          src={songToPlay || undefined}
+        />
+      </div>
+      <aside className="md:row-start-1 md:row-end-3 md:col-start-1"><MainNavigation /></aside>
     </main>
   );
 }
