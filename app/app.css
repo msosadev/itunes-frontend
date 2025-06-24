@@ -45,6 +45,9 @@ body {
 .rhap_main-controls-button {
   @apply !text-white
 }
+.rhap_volume-controls {
+  @apply min-w-24
+}
 
 /* Page Loading Spinner */
 .animate-trace .trace-path {

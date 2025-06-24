@@ -1,9 +1,10 @@
-import { CirclePlay, Play } from "lucide-react";
+import { CirclePause, CirclePlay } from "lucide-react";
 import { useContext } from "react";
 import { Link } from "react-router";
 import { SongContext } from "~/context/SongContext";
 
 interface Song {
+  trackId: number;
   artworkUrl60: string;
   trackName: string;
   collectionName: string;
@@ -21,7 +22,7 @@ type SongListItemProps = {
 export default function SongListItem({ song, infoToShow = ["artistName", "collectionName", "artworkUrl60"] }: SongListItemProps) {
   const coverImg = infoToShow.find(info => info.includes("artworkUrl")) || null;
   const infoKeys = infoToShow.filter(info => !info.includes("artworkUrl"));
-  const { setSongToPlay } = useContext(SongContext);
+  const { setSongToPlay, songToPlay } = useContext(SongContext);
   return (
     <li className="flex items-center gap-4 py-2 px-4">
       {coverImg && song[coverImg as keyof Song] && (
@@ -39,7 +40,10 @@ export default function SongListItem({ song, infoToShow = ["artistName", "collec
           }
         })}
       </div>
-      {song.previewUrl && <button className="cursor-pointer" onClick={() => { setSongToPlay(song.previewUrl!) }}><CirclePlay /></button>}
+      {song.previewUrl &&
+        <button className="cursor-pointer" onClick={() => { setSongToPlay(song) }}>
+          {songToPlay.trackId === song.trackId ? <CirclePause /> : <CirclePlay />}
+        </button>}
     </li>
   );
 }
