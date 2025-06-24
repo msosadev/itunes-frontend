@@ -1,0 +1,11 @@
+import{a as x,o as t,v as i,t as y}from"./chunk-NL6KNZEE-COrKcMPs.js";import{S as p}from"./SongContext-C9AI-YLp.js";import{c as n}from"./createLucideIcon-BiP2d-W3.js";/**
+ * @license lucide-react v0.518.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const d=[["circle",{cx:"12",cy:"12",r:"10",key:"1mglay"}],["line",{x1:"10",x2:"10",y1:"15",y2:"9",key:"c1nkhi"}],["line",{x1:"14",x2:"14",y1:"15",y2:"9",key:"h65svq"}]],u=n("circle-pause",d);/**
+ * @license lucide-react v0.518.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const N=[["circle",{cx:"12",cy:"12",r:"10",key:"1mglay"}],["polygon",{points:"10 8 16 12 10 16 10 8",key:"1cimsy"}]],j=n("circle-play",N);function h({song:e,infoToShow:c=["artistName","collectionName","artworkUrl60"]}){const r=c.find(a=>a.includes("artworkUrl"))||null,l=c.filter(a=>!a.includes("artworkUrl")),{setSongToPlay:m,songToPlay:o}=x.useContext(p);return t.jsxs("li",{className:"flex items-center gap-4 py-2 px-4",children:[r&&e[r]&&t.jsx("img",{className:"aspect-square object-cover gap-2 max-w-12 rounded-sm",src:e[r],alt:e.trackName}),t.jsxs("div",{className:"song-info space-y-1 flex-1",children:[t.jsx("h6",{className:"text-sm line-clamp-1",children:e.trackName}),l.map((a,s)=>a==="collectionName"&&e.collectionName?t.jsx(i,{to:`/album/${e.collectionId}`,className:"text-xs text-gray-400 line-clamp-1",children:e.collectionName},s):a==="artistName"&&e.artistName?t.jsx(i,{to:`/artist/${e.artistId}`,className:"text-xs text-gray-400 line-clamp-1",children:e.artistName},s):t.jsx("p",{className:"text-xs text-gray-400 line-clamp-1",children:e[a]},s))]}),e.previewUrl&&t.jsx("button",{className:"cursor-pointer",onClick:()=>{m(e)},children:o.trackId===e.trackId?t.jsx(u,{}):t.jsx(j,{})})]})}function g({songs:e,infoToShow:c=["artistName","collectionName","artworkUrl60"]}){return!e||e.length===0?null:t.jsx("ul",{className:"bg-gray-800 rounded-lg",children:e.map((r,l)=>t.jsxs(y.Fragment,{children:[t.jsx(h,{song:r,infoToShow:c}),l<e.length-1&&t.jsx("li",{children:t.jsx("hr",{className:"border-gray-600 my-1"})})]},r.trackId||l))})}export{g as S};

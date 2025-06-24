@@ -1,4 +1,4 @@
-import{w as j,a,o as t,v as S}from"./chunk-NL6KNZEE-COrKcMPs.js";import{S as f,A as w}from"./AlbumsGrid-CH87KVxc.js";import{S as N}from"./SongList-DYnJUKKi.js";import{S as k,G as v}from"./search-Dc49xB7c.js";import{c as T}from"./createLucideIcon-BiP2d-W3.js";import"./SongContext-C9AI-YLp.js";/**
+import{w as j,a,o as t,v as S}from"./chunk-NL6KNZEE-COrKcMPs.js";import{S as f,A as w}from"./AlbumsGrid-CG9rpf5L.js";import{S as N}from"./SongList-CCzQ55i-.js";import{S as k,G as v}from"./search-Dc49xB7c.js";import{c as T}from"./createLucideIcon-BiP2d-W3.js";import"./SongContext-C9AI-YLp.js";/**
  * @license lucide-react v0.518.0 - ISC
  *
  * This source code is licensed under the ISC license.
