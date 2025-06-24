@@ -50,7 +50,7 @@ export default function Search() {
   }, [searchTerm]);
 
   return (
-    <div className="wrapper my-10 space-y-4">
+    <div className="wrapper mt-10 space-y-4">
       <h1 className="text-3xl font-bold">Search</h1>
       <div className={`flex flex-col gap-4 p-0.5 magic-gradient after:opacity-0 has-[input:focus]:after:opacity-100 rounded-lg transition-opacity ${loading ? "opacity-50 pointer-events-none" : ""}  `}>
         <form

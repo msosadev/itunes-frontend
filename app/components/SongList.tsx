@@ -7,7 +7,7 @@ export default function SongList({ songs, infoToShow = ["artistName", "collectio
     return (
         <ul className="bg-gray-800 rounded-lg">
             {songs.map((song, idx) => (
-                <React.Fragment key={song.trackId}>
+                <React.Fragment key={song.trackId || idx}>
                     <SongListItem song={song} infoToShow={infoToShow} />
                     {idx < songs.length - 1 && (
                         <li>
