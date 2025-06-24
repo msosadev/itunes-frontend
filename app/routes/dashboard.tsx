@@ -9,8 +9,8 @@ import 'react-h5-audio-player/lib/styles.css';
 
 export function meta({ }: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "iTunes Frontend" },
+    { name: "description", content: "A frontend created using various iTunes APIs" },
   ];
 }
 
