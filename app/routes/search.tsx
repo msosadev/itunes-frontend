@@ -11,6 +11,7 @@ export default function Search() {
   const [results, setResults] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [searchPerformed, setSearchPerformed] = useState(false);
+  const [error, setError] = useState<boolean>(false);
   const inputId = useId();
 
   async function searchHandler() {
@@ -18,13 +19,24 @@ export default function Search() {
     if (!trimmedSearch) return;
 
     setLoading(true);
-    const searchResults = await useSearch(trimmedSearch, 25);
+    let searchResults;
+    try {
+      searchResults = await useSearch(trimmedSearch, 25);
+    } catch (error) {
+      console.error("Error during search:", error);
+      setLoading(false);
+      setError(true);
+      return;
+    }
+    
+    setError(false);
     setLoading(false);
     setSearchPerformed(true);
     setResults(searchResults.results || []);
   }
 
   useEffect(() => {
+    if (searchTerm.trim() === "") return;
     const searchTimeout = setTimeout(() => {
       if (searchTerm.trim()) {
         searchHandler();
@@ -59,6 +71,7 @@ export default function Search() {
           />
         </form>
       </div>
+      {error && <p className="text-red-300">An error occurred while searching. Please try again.</p>}
       <Loader className={`animate-spin mx-auto text-gray-500 ${loading ? "block" : "hidden"}`} />
       {results.length > 0 && (
         <div className="mt-4">
