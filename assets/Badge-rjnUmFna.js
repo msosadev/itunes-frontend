@@ -1,1 +1,0 @@
-import{o as e}from"./chunk-NL6KNZEE-COrKcMPs.js";function n({label:t}){return e.jsx("div",{className:"inline-block magic-gradient text-white text-xs font-semibold p-0.5 rounded-full",children:e.jsx("span",{className:"bg-gray-900 font-bold rounded-full px-2 p-1 block z-[1] relative",children:t})})}export{n as B};
